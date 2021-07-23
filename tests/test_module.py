@@ -1,8 +1,8 @@
 import unittest
 
-import stactools.package
+import stactools.alos_dem
 
 
 class TestModule(unittest.TestCase):
     def test_version(self):
-        self.assertIsNotNone(stactools.package.__version__)
+        self.assertIsNotNone(stactools.alos_dem.__version__)

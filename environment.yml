@@ -1,4 +1,4 @@
-name: stactools-package
+name: stactools-alos-dem
 channels:
   - conda-forge
   - defaults
