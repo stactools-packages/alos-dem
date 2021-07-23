@@ -1,0 +1,11 @@
+codespell
+coverage
+flake8
+jupyter
+pylint
+sphinx
+sphinx-autobuild
+sphinx-click
+sphinxcontrib-fulltoc
+sphinxcontrib-napoleon
+yapf
