@@ -21,6 +21,14 @@ class StacTest(TestCase):
             item.datetime,
             datetime.datetime(2016, 12, 7, tzinfo=datetime.timezone.utc))
 
+        common_metadata = item.common_metadata
+        self.assertEqual(common_metadata.platform,
+                         "Advanced Land Observing Satellite (ALOS)")
+        self.assertEqual(common_metadata.instruments, [
+            "Panchromatic Remote-sensing Instrument for Stereo Mapping (PRISM)"
+        ])
+        self.assertEqual(common_metadata.gsd, 30)
+
         projection = ProjectionExtension.ext(item)
         self.assertEqual(projection.epsg, 4326)
         self.assertEqual(projection.shape, (3600, 3600))

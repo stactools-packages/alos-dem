@@ -3,12 +3,14 @@ from typing import Optional
 from pystac.extensions.projection import ProjectionExtension
 
 import rasterio
-from rasterio.windows import transform
 from shapely.geometry import mapping, box
 from pystac import Item
 
 from stactools.core.io import ReadHrefModifier
-from stactools.alos_dem.constants import OPENTOPOGRAPHY_DATETIME
+from stactools.alos_dem.constants import (OPENTOPOGRAPHY_DATETIME,
+                                          ALOS_DEM_PLATFORM,
+                                          ALOS_DEM_INSTRUMENTS, ALOS_DEM_GSD,
+                                          ALOS_DEM_EPSG)
 
 
 def create_item(href: str,
@@ -34,8 +36,12 @@ def create_item(href: str,
                 properties={},
                 stac_extensions={})
 
+    item.common_metadata.platform = ALOS_DEM_PLATFORM
+    item.common_metadata.instruments = ALOS_DEM_INSTRUMENTS
+    item.common_metadata.gsd = ALOS_DEM_GSD
+
     projection = ProjectionExtension.ext(item, add_if_missing=True)
-    projection.epsg = 4326
+    projection.epsg = ALOS_DEM_EPSG
     projection.transform = transform[0:6]
     projection.shape = shape
 
