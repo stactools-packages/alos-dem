@@ -2,6 +2,7 @@ import datetime
 from unittest import TestCase
 
 from pystac.extensions.projection import ProjectionExtension
+from pystac.provider import Provider
 
 from stactools.alos_dem import stac
 
@@ -28,6 +29,15 @@ class StacTest(TestCase):
             "Panchromatic Remote-sensing Instrument for Stereo Mapping (PRISM)"
         ])
         self.assertEqual(common_metadata.gsd, 30)
+        self.assertEqual(common_metadata.providers, [
+            Provider("Japan Aerospace Exploration Agency",
+                     roles=["producer", "processor", "licensor"],
+                     url="https://www.eorc.jaxa.jp/ALOS/en/aw3d30/index.htm"),
+            Provider("OpenTopography",
+                     roles=["host"],
+                     url=("https://portal.opentopography.org/"
+                          "raster?opentopoID=OTALOS.112016.4326.2")),
+        ])
 
         projection = ProjectionExtension.ext(item)
         self.assertEqual(projection.epsg, 4326)
