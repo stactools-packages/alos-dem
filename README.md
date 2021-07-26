@@ -20,7 +20,6 @@ This data set is a global digital surface model (DSM) with horizontal resolution
 
 ### STAC objects
 
-- [Collection](examples/collection.json)
 - [Item](examples/item/item.json)
 
 ### Command-line usage
@@ -28,7 +27,7 @@ This data set is a global digital surface model (DSM) with horizontal resolution
 Description of the command line functions
 
 ```bash
-$ stac package create-item source destination
+$ stac alos-dem create-item ALPSMLC30_N041W106_DSM.tif ALPSMLC30_N041W106_DSM.json
 ```
 
 Use `stac package --help` to see all subcommands and options.
