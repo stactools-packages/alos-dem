@@ -1,8 +1,8 @@
 import datetime
 from unittest import TestCase
 
+from pystac import Provider
 from pystac.extensions.projection import ProjectionExtension
-from pystac.provider import Provider
 
 from stactools.alos_dem import stac
 
@@ -38,6 +38,7 @@ class StacTest(TestCase):
                      url=("https://portal.opentopography.org/"
                           "raster?opentopoID=OTALOS.112016.4326.2")),
         ])
+        self.assertEqual(common_metadata.license, "proprietary")
 
         projection = ProjectionExtension.ext(item)
         self.assertEqual(projection.epsg, 4326)
@@ -46,6 +47,15 @@ class StacTest(TestCase):
             0.0002777777777777778, 0.0, -106.0, 0.0, -0.0002777777777777778,
             42.0
         ])
+
+        handbook = item.get_single_link("handbook")
+        self.assertIsNotNone(handbook)
+        self.assertEqual(handbook.title, "ALOS User handbooks")
+        self.assertEqual(handbook.rel, "handbook")
+        self.assertEqual(
+            handbook.href,
+            "https://www.eorc.jaxa.jp/ALOS/en/doc/alos_userhb_en.pdf")
+        self.assertEqual(handbook.media_type, "application/pdf")
 
         item.validate()
 

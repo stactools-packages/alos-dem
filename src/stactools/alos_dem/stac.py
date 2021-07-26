@@ -7,7 +7,7 @@ from shapely.geometry import mapping, box
 from pystac import Item
 
 from stactools.core.io import ReadHrefModifier
-from stactools.alos_dem.constants import (ALOS_DEM_PROVIDERS,
+from stactools.alos_dem.constants import (ALOS_DEM_LINKS, ALOS_DEM_PROVIDERS,
                                           OPENTOPOGRAPHY_DATETIME,
                                           ALOS_DEM_PLATFORM,
                                           ALOS_DEM_INSTRUMENTS, ALOS_DEM_GSD,
@@ -37,10 +37,12 @@ def create_item(href: str,
                 properties={},
                 stac_extensions={})
 
+    item.add_links(ALOS_DEM_LINKS)
     item.common_metadata.platform = ALOS_DEM_PLATFORM
     item.common_metadata.instruments = ALOS_DEM_INSTRUMENTS
     item.common_metadata.gsd = ALOS_DEM_GSD
     item.common_metadata.providers = ALOS_DEM_PROVIDERS
+    item.common_metadata.license = "proprietary"
 
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = ALOS_DEM_EPSG

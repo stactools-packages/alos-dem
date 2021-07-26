@@ -1,6 +1,6 @@
 import datetime
 
-from pystac import Provider
+from pystac import Provider, Link
 
 ALOS_DEM_PLATFORM = "Advanced Land Observing Satellite (ALOS)"
 ALOS_DEM_INSTRUMENTS = [
@@ -16,6 +16,13 @@ ALOS_DEM_PROVIDERS = [
              roles=["host"],
              url=("https://portal.opentopography.org/"
                   "raster?opentopoID=OTALOS.112016.4326.2")),
+]
+ALOS_DEM_LINKS = [
+    Link("handbook",
+         "https://www.eorc.jaxa.jp/ALOS/en/doc/alos_userhb_en.pdf",
+         "application/pdf",
+         "ALOS User handbooks",
+         extra_fields={"description": "Also includes data usage information"})
 ]
 
 # This stactools package was created to interact with the ALOS DEM data hosted
