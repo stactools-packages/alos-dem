@@ -1,0 +1,100 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "ALPSMLC30_N041W106_DSM",
+  "properties": {
+    "platform": "Advanced Land Observing Satellite (ALOS)",
+    "instruments": [
+      "Panchromatic Remote-sensing Instrument for Stereo Mapping (PRISM)"
+    ],
+    "gsd": 30,
+    "providers": [
+      {
+        "name": "Japan Aerospace Exploration Agency",
+        "roles": [
+          "producer",
+          "processor",
+          "licensor"
+        ],
+        "url": "https://www.eorc.jaxa.jp/ALOS/en/aw3d30/index.htm"
+      },
+      {
+        "name": "OpenTopography",
+        "roles": [
+          "host"
+        ],
+        "url": "https://portal.opentopography.org/raster?opentopoID=OTALOS.112016.4326.2"
+      }
+    ],
+    "license": "proprietary",
+    "proj:epsg": 4326,
+    "proj:transform": [
+      0.0002777777777777778,
+      0.0,
+      -106.0,
+      0.0,
+      -0.0002777777777777778,
+      42.0
+    ],
+    "proj:shape": [
+      3600,
+      3600
+    ],
+    "datetime": "2016-12-07T00:00:00Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -105.0,
+          41.0
+        ],
+        [
+          -105.0,
+          42.0
+        ],
+        [
+          -106.0,
+          42.0
+        ],
+        [
+          -106.0,
+          41.0
+        ],
+        [
+          -105.0,
+          41.0
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "handbook",
+      "href": "https://www.eorc.jaxa.jp/ALOS/en/doc/alos_userhb_en.pdf",
+      "type": "application/pdf",
+      "title": "ALOS User handbooks",
+      "description": "Also includes data usage information"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "tests/data-files/external/ALPSMLC30_N041W106_DSM.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "N041W106",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "bbox": [
+    -106.0,
+    41.0,
+    -105.0,
+    42.0
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
+  ]
+}

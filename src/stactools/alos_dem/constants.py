@@ -21,7 +21,7 @@ ALOS_DEM_LINKS = [
     Link("handbook",
          "https://www.eorc.jaxa.jp/ALOS/en/doc/alos_userhb_en.pdf",
          "application/pdf",
-         "ALOS User handbooks",
+         "ALOS User handbook",
          extra_fields={"description": "Also includes data usage information"})
 ]
 

@@ -1,7 +1,7 @@
 import datetime
 from unittest import TestCase
 
-from pystac import Provider
+from pystac import Provider, MediaType
 from pystac.extensions.projection import ProjectionExtension
 
 from stactools.alos_dem import stac
@@ -50,12 +50,19 @@ class StacTest(TestCase):
 
         handbook = item.get_single_link("handbook")
         self.assertIsNotNone(handbook)
-        self.assertEqual(handbook.title, "ALOS User handbooks")
+        self.assertEqual(handbook.title, "ALOS User handbook")
         self.assertEqual(handbook.rel, "handbook")
         self.assertEqual(
             handbook.href,
             "https://www.eorc.jaxa.jp/ALOS/en/doc/alos_userhb_en.pdf")
         self.assertEqual(handbook.media_type, "application/pdf")
+
+        data = item.assets["data"]
+        self.assertEqual(data.href, self.path)
+        self.assertEqual(data.title, "N041W106")
+        self.assertIsNone(data.description)
+        self.assertEqual(data.media_type, MediaType.COG)
+        self.assertEqual(data.roles, ["data"])
 
         item.validate()
 

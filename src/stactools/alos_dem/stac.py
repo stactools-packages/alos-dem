@@ -1,6 +1,8 @@
 import os.path
 from typing import Optional
+from pystac.asset import Asset
 from pystac.extensions.projection import ProjectionExtension
+from pystac.media_type import MediaType
 
 import rasterio
 from shapely.geometry import mapping, box
@@ -43,6 +45,20 @@ def create_item(href: str,
     item.common_metadata.gsd = ALOS_DEM_GSD
     item.common_metadata.providers = ALOS_DEM_PROVIDERS
     item.common_metadata.license = "proprietary"
+
+    parts = os.path.basename(href).split("_")
+    if len(parts) != 3:
+        raise ValueError(
+            f"Unexpected file name, expected two underscores in name: {os.path.basename(href)}"
+        )
+    title = parts[1]
+    item.add_asset(
+        "data",
+        Asset(href=href,
+              title=title,
+              description=None,
+              media_type=MediaType.COG,
+              roles=["data"]))
 
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = ALOS_DEM_EPSG
