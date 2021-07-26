@@ -1,6 +1,8 @@
 import datetime
 from unittest import TestCase
 
+from pystac.extensions.projection import ProjectionExtension
+
 from stactools.alos_dem import stac
 
 from tests import test_data
@@ -18,6 +20,15 @@ class StacTest(TestCase):
         self.assertEqual(
             item.datetime,
             datetime.datetime(2016, 12, 7, tzinfo=datetime.timezone.utc))
+
+        projection = ProjectionExtension.ext(item)
+        self.assertEqual(projection.epsg, 4326)
+        self.assertEqual(projection.shape, (3600, 3600))
+        self.assertEqual(list(projection.transform), [
+            0.0002777777777777778, 0.0, -106.0, 0.0, -0.0002777777777777778,
+            42.0
+        ])
+
         item.validate()
 
     def test_create_item_with_read_href_modifier(self):

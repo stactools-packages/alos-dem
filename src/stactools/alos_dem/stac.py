@@ -1,7 +1,9 @@
 import os.path
 from typing import Optional
+from pystac.extensions.projection import ProjectionExtension
 
 import rasterio
+from rasterio.windows import transform
 from shapely.geometry import mapping, box
 from pystac import Item
 
@@ -23,10 +25,18 @@ def create_item(href: str,
             )
         bbox = dataset.bounds
         geometry = mapping(box(*bbox))
+        transform = dataset.transform
+        shape = dataset.shape
     item = Item(id=os.path.splitext(os.path.basename(href))[0],
                 geometry=geometry,
                 bbox=bbox,
                 datetime=OPENTOPOGRAPHY_DATETIME,
                 properties={},
                 stac_extensions={})
+
+    projection = ProjectionExtension.ext(item, add_if_missing=True)
+    projection.epsg = 4326
+    projection.transform = transform[0:6]
+    projection.shape = shape
+
     return item
