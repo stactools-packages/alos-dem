@@ -20,7 +20,7 @@ This data set is a global digital surface model (DSM) with horizontal resolution
 
 ### STAC objects
 
-- [Item](examples/item/item.json)
+- [Item](examples/ALPSMLC30_N041W106_DSM.json)
 
 ### Command-line usage
 
