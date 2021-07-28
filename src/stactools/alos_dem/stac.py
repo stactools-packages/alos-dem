@@ -28,7 +28,7 @@ def create_item(href: str,
             raise ValueError(
                 f"Dataset {href} is not EPSG:4326, which is required for ALOS DEM data"
             )
-        bbox = dataset.bounds
+        bbox = list(dataset.bounds)
         geometry = mapping(box(*bbox))
         transform = dataset.transform
         shape = dataset.shape
