@@ -74,5 +74,5 @@ class StacTest(TestCase):
             done = True
             return href
 
-        _ = stac.create_item(self.path, read_href_modifer=do_it)
+        _ = stac.create_item(self.path, read_href_modifier=do_it)
         self.assertTrue(done, "Didn't do it")

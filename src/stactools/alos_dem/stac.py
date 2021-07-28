@@ -17,10 +17,10 @@ from stactools.alos_dem.constants import (ALOS_DEM_LINKS, ALOS_DEM_PROVIDERS,
 
 
 def create_item(href: str,
-                read_href_modifer: Optional[ReadHrefModifier] = None) -> Item:
+                read_href_modifier: Optional[ReadHrefModifier] = None) -> Item:
     """Creates a STAC Item from a single tile of ALOS DEM data."""
-    if read_href_modifer:
-        modified_href = read_href_modifer(href)
+    if read_href_modifier:
+        modified_href = read_href_modifier(href)
     else:
         modified_href = href
     with rasterio.open(modified_href) as dataset:
