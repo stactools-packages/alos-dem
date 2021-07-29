@@ -7,7 +7,7 @@ WORKDIR /opt/stactools-alos-dem
 COPY pyproject.toml setup.cfg ./
 COPY src/stactools/alos_dem/__init__.py src/stactools/alos_dem/
 RUN pip install . \
-    && rm -r /opt/conda/lib/python3.8/site-packages/stactools/alos_dem
+    && rm -r /opt/conda/lib/python3.9/site-packages/stactools/alos_dem
 
 COPY src ./src
 RUN pip install .
