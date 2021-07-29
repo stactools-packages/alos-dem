@@ -15,6 +15,7 @@ This data set is a global digital surface model (DSM) with horizontal resolution
 
 (from https://www.eorc.jaxa.jp/ALOS/en/aw3d30/index.htm)
 
+[![CI](https://github.com/stactools-packages/alos-dem/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/stactools-packages/alos-dem/actions/workflows/continuous-integration.yml)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/stactools-packages/alos-gap/main?filepath=docs/installation_and_basic_usage.ipynb)
 ## Examples
 
