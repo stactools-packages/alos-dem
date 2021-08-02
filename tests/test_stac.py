@@ -23,11 +23,8 @@ class StacTest(TestCase):
             datetime.datetime(2016, 12, 7, tzinfo=datetime.timezone.utc))
 
         common_metadata = item.common_metadata
-        self.assertEqual(common_metadata.platform,
-                         "Advanced Land Observing Satellite (ALOS)")
-        self.assertEqual(common_metadata.instruments, [
-            "Panchromatic Remote-sensing Instrument for Stereo Mapping (PRISM)"
-        ])
+        self.assertEqual(common_metadata.platform, "alos")
+        self.assertEqual(common_metadata.instruments, ["prism"])
         self.assertEqual(common_metadata.gsd, 30)
         self.assertEqual(common_metadata.providers, [
             Provider("Japan Aerospace Exploration Agency",
