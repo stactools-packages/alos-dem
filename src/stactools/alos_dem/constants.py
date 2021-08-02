@@ -2,10 +2,8 @@ import datetime
 
 from pystac import Provider, Link
 
-ALOS_DEM_PLATFORM = "Advanced Land Observing Satellite (ALOS)"
-ALOS_DEM_INSTRUMENTS = [
-    "Panchromatic Remote-sensing Instrument for Stereo Mapping (PRISM)"
-]
+ALOS_DEM_PLATFORM = "alos"
+ALOS_DEM_INSTRUMENTS = ["prism"]
 ALOS_DEM_GSD = 30  # meters
 ALOS_DEM_EPSG = 4326
 ALOS_DEM_PROVIDERS = [
