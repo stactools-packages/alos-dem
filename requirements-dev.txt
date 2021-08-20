@@ -8,4 +8,5 @@ sphinx-autobuild
 sphinx-click
 sphinxcontrib-fulltoc
 sphinxcontrib-napoleon
+stactools[s3] == 0.2.1
 yapf
